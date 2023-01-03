@@ -12,7 +12,7 @@ def find_password():
         with open("data.json") as data_file:
             data = json.load(data_file)
     except FileNotFoundError:
-        print("Nothing saved.")
+        messagebox.showinfo(title="Error", message="Nothing saved.")
     else:
         if website in data:
             messagebox.showinfo(title=website, message=f"E-mail: {data[website]['email']}"
@@ -88,27 +88,27 @@ canvas.create_image(100, 100, image=logo)
 canvas.grid(column=1, row=0)
 
 website = Label(text="Website:")
-website.grid(column=0, row=1)
+website.grid(column=0, row=2, sticky="w")
 email = Label(text="Email/Usarname:")
-email.grid(column=0, row=2)
+email.grid(column=0, row=1, sticky="w")
 password = Label(text="Password")
-password.grid(column=0, row=3)
+password.grid(column=0, row=3, sticky="w")
 
 field_website = Entry(width=22)
-field_website.grid(column=1, row=1)
+field_website.grid(column=1, row=2)
 field_website.focus()
-field_email = Entry(width=40)
-field_email.grid(column=1, row=2, columnspan=2)
+field_email = Entry(width=41)
+field_email.grid(column=1, row=1, columnspan=2)
 field_email.insert(0, "teste@teste.com")
 field_word = Entry(width=22)
 field_word.grid(column=1, row=3)
 
-gen_pass = Button(text="Generate Password", command=generate_password)
-gen_pass.grid(column=2, row=3)
+gen_pass = Button(text="Generate Password", width=15, command=generate_password)
+gen_pass.grid(column=2, row=3, sticky="w")
 add = Button(text="Add", width=34, command=save)
 add.grid(column=1, row=4, columnspan=2)
-search = Button(text="Search", command=find_password)
-search.grid(column=2, row=1)
+search = Button(text="Search", width=15, command=find_password)
+search.grid(column=2, row=2, sticky="w")
 
 
 window.mainloop()
